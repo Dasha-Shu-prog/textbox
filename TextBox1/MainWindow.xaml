@@ -6,10 +6,37 @@
         xmlns:local="clr-namespace:TextBox1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid HorizontalAlignment="Center" Height="420" VerticalAlignment="Top" Width="790">
-        <Button x:Name="decrement" Content="&lt;" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Margin="322,197,432,0" Height="36" Width="36" RenderTransformOrigin="1.41,0.521" VerticalContentAlignment="Center" Click="Decrement_Click" Cursor="Hand"/>
-        <Button x:Name="increment" Content="&gt;" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Margin="438,197,316,0" RenderTransformOrigin="1.475,0.77" Height="36" Width="36" Click="Increment_Click" Cursor="Hand"/>
-        <TextBox x:Name="textbox" HorizontalAlignment="Left" Margin="358,197,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" FontSize="24" TextAlignment="Center" Width="80" Height="36" FontFamily="Arial Unicode MS" TextChanged="TextBox_TextChanged"/>
+    <Window.Resources>
+        <Style TargetType="RepeatButton">
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Background" Value="#60B9CE"/>
+            <Setter Property="Padding" Value="0,-5,0,1" />
+        </Style>
+    </Window.Resources>
+    <Grid HorizontalAlignment="Center" Height="420" VerticalAlignment="Top" Width="152">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <RepeatButton x:Name="decrement" Grid.Column="0" Content="←" 
+                      HorizontalAlignment="Left" VerticalAlignment="Center" 
+                      Height="36" Width="36" Click="Decrement_Click"/>
+        <RepeatButton x:Name="increment" Grid.Column="2" Content="→" 
+                      HorizontalAlignment="Right" VerticalAlignment="Center" 
+                      Height="36" Width="36" Click="Increment_Click"/>
+        <TextBox x:Name="textbox"  Grid.Column="1" Text="0" 
+                 HorizontalAlignment="Center" VerticalAlignment="Center" 
+                 FontSize="24" TextAlignment="Center" 
+                 Width="80" Height="36" FontFamily="Arial Unicode MS" 
+                 TextChanged="TextBox_TextChanged"/>
         
     </Grid>
 </Window>

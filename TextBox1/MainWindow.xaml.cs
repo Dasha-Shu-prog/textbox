@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-
-
+using System.Windows.Controls.Primitives;
+using Key = System.Windows.Input.Key;
 namespace TextBox1
 {
     /// <summary>
@@ -12,13 +12,15 @@ namespace TextBox1
     {
         private int value = 0;
         const int MIN_VALUE = 0;
-        const int MAX_VALUE = 350;
+        const int MAX_VALUE = 360;
 
         public MainWindow()
         {
             InitializeComponent();
-        }
 
+            decrement.KeyDown += Decrement_KeyDown;
+            increment.KeyDown += Increment_KeyDown;
+        }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             int result;
@@ -33,14 +35,17 @@ namespace TextBox1
             }
             textbox.Text = value.ToString();
 
-            decrement.IsEnabled = true;
-            increment.IsEnabled = true;
             if (value == MIN_VALUE)
-            {
                 decrement.IsEnabled = false;
-            } else if (value == MAX_VALUE) {
+            
+            else if (value == MAX_VALUE) 
                 increment.IsEnabled = false;
-            }
+
+            else
+            {
+                decrement.IsEnabled = true;
+                increment.IsEnabled = true;
+            }     
         }
 
         private void validateData(ref int value)
@@ -66,6 +71,22 @@ namespace TextBox1
             validateData(ref newValue);
             textbox.Text = value.ToString();
         }
+       private void Increment_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            
+            switch (e.Key)
+            {
+                case Key.Right: break;
+            }
+        }
 
+        private void Decrement_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            throw new NotImplementedException();
+        } 
     }
+    
+        
+
+    
 }
