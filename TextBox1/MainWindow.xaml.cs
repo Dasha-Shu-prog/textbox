@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using Key = System.Windows.Input.Key;
 namespace TextBox1
 {
@@ -12,14 +11,11 @@ namespace TextBox1
     {
         private int value = 0;
         const int MIN_VALUE = 0;
-        const int MAX_VALUE = 360;
+        const int MAX_VALUE = 999;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            decrement.KeyDown += Decrement_KeyDown;
-            increment.KeyDown += Increment_KeyDown;
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -71,22 +67,41 @@ namespace TextBox1
             validateData(ref newValue);
             textbox.Text = value.ToString();
         }
-       private void Increment_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            
             switch (e.Key)
             {
-                case Key.Right: break;
+                case Key.Right:
+                    {
+                        Increment_Click(sender, null);
+                        break;
+                    }
+                case Key.Left:
+                    {
+                        Decrement_Click(sender, null);
+                        break;
+                    }
+                case Key.Up:
+                    {
+                        Increment_Click(sender, null);
+                        break;
+                    }
+                case Key.Down:
+                    {
+                        Decrement_Click(sender, null);
+                        break;
+                    }
             }
         }
-
-        private void Decrement_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void textbox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
-        } 
-    }
-    
-        
-
-    
+            textbox.Focusable = true;
+            textbox.Focus();
+        }
+        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+           textbox.Focusable = false;
+           decrement.Focus();
+        }
+    }   
 }

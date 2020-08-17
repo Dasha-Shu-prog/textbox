@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextBox1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        KeyDown="Window_KeyDown" 
+        MouseDown="Window_MouseDown"
+        Focusable="True">
     <Window.Resources>
         <Style TargetType="RepeatButton">
             <Setter Property="FontSize" Value="30"/>
@@ -17,7 +20,7 @@
             <Setter Property="Padding" Value="0,-5,0,1" />
         </Style>
     </Window.Resources>
-    <Grid HorizontalAlignment="Center" Height="420" VerticalAlignment="Top" Width="152">
+    <Grid HorizontalAlignment="Center" Height="36" VerticalAlignment="Center" Width="152">
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -26,17 +29,19 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
-        <RepeatButton x:Name="decrement" Grid.Column="0" Content="←" 
+        <RepeatButton x:Name="decrement" Grid.Column="0" Content="&lt;" 
                       HorizontalAlignment="Left" VerticalAlignment="Center" 
                       Height="36" Width="36" Click="Decrement_Click"/>
-        <RepeatButton x:Name="increment" Grid.Column="2" Content="→" 
+        <RepeatButton x:Name="increment" Grid.Column="2" Content="&gt;" 
                       HorizontalAlignment="Right" VerticalAlignment="Center" 
                       Height="36" Width="36" Click="Increment_Click"/>
         <TextBox x:Name="textbox"  Grid.Column="1" Text="0" 
                  HorizontalAlignment="Center" VerticalAlignment="Center" 
                  FontSize="24" TextAlignment="Center" 
                  Width="80" Height="36" FontFamily="Arial Unicode MS" 
-                 TextChanged="TextBox_TextChanged"/>
+                 TextChanged="TextBox_TextChanged"
+                 Focusable="False" MouseUp="textbox_MouseUp"
+                 />
         
     </Grid>
 </Window>
