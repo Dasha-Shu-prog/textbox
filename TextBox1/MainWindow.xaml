@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         KeyDown="Window_KeyDown" 
-        MouseDown="Window_MouseDown"
         Focusable="True">
     <Window.Resources>
         <Style TargetType="RepeatButton">
@@ -40,7 +39,8 @@
                  FontSize="24" TextAlignment="Center" 
                  Width="80" Height="36" FontFamily="Arial Unicode MS" 
                  TextChanged="TextBox_TextChanged"
-                 Focusable="False" MouseUp="textbox_MouseUp"
+                 Focusable="False" MouseDown="textbox_MouseDown"
+                 LostKeyboardFocus="textbox_LostKeyboardFocus"
                  />
         
     </Grid>

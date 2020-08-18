@@ -33,15 +33,15 @@ namespace TextBox1
 
             if (value == MIN_VALUE)
                 decrement.IsEnabled = false;
-            
-            else if (value == MAX_VALUE) 
+
+            else if (value == MAX_VALUE)
                 increment.IsEnabled = false;
 
             else
             {
                 decrement.IsEnabled = true;
                 increment.IsEnabled = true;
-            }     
+            }
         }
 
         private void validateData(ref int value)
@@ -57,7 +57,7 @@ namespace TextBox1
         }
         private void Decrement_Click(object sender, RoutedEventArgs e)
         {
-           int newValue = --value;
+            int newValue = --value;
             validateData(ref newValue);
             textbox.Text = value.ToString();
         }
@@ -93,15 +93,13 @@ namespace TextBox1
                     }
             }
         }
-        private void textbox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void textbox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             textbox.Focusable = true;
-            textbox.Focus();
         }
-        private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void textbox_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
         {
-           textbox.Focusable = false;
-           decrement.Focus();
+            textbox.Focusable = false;
         }
-    }   
+    }    
 }
