@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Key = System.Windows.Input.Key;
 namespace TextBox1
 {
@@ -67,7 +68,7 @@ namespace TextBox1
             validateData(ref newValue);
             textbox.Text = value.ToString();
         }
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Textbox_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
@@ -91,15 +92,24 @@ namespace TextBox1
                         Decrement_Click(sender, null);
                         break;
                     }
-            }
+            }        
         }
         private void textbox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             textbox.Focusable = true;
         }
-        private void textbox_LostKeyboardFocus(object sender, System.Windows.Input.KeyboardFocusChangedEventArgs e)
+        private void textbox_KeyUp(object sender, KeyEventArgs e)
         {
-            textbox.Focusable = false;
+            if (e.Key == Key.Right || e.Key == Key.Up)
+            {
+                Increment_Click(sender, null);
+                increment.Focusable = true;
+            }
+            else if (e.Key == Key.Left || e.Key == Key.Down)
+            {
+                Decrement_Click(sender, null);
+                decrement.Focusable = true;
+            }
         }
     }    
 }

@@ -5,9 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextBox1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
-        KeyDown="Window_KeyDown" 
-        Focusable="True">
+        Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <Style TargetType="RepeatButton">
             <Setter Property="FontSize" Value="30"/>
@@ -40,8 +38,7 @@
                  Width="80" Height="36" FontFamily="Arial Unicode MS" 
                  TextChanged="TextBox_TextChanged"
                  Focusable="False" MouseDown="textbox_MouseDown"
-                 LostKeyboardFocus="textbox_LostKeyboardFocus"
+                 KeyUp="textbox_KeyUp" KeyDown="Textbox_KeyDown"         
                  />
-        
     </Grid>
 </Window>
