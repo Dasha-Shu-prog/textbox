@@ -38,7 +38,7 @@
                  Width="80" Height="36" FontFamily="Arial Unicode MS" 
                  TextChanged="TextBox_TextChanged"
                  Focusable="False" MouseDown="textbox_MouseDown"
-                 KeyUp="textbox_KeyUp" KeyDown="Textbox_KeyDown"         
+                 KeyDown="Textbox_KeyDown" PreviewKeyDown="textbox_PreviewKeyDown"
                  />
     </Grid>
 </Window>

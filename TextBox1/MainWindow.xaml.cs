@@ -68,8 +68,26 @@ namespace TextBox1
             validateData(ref newValue);
             textbox.Text = value.ToString();
         }
+        private void textbox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            textbox.Focusable = true;
+        }
         private void Textbox_KeyDown(object sender, KeyEventArgs e)
         {
+           if (e.Key == Key.Right || e.Key == Key.Up)
+            {
+                 Increment_Click(sender, null);
+                 increment.Focusable = true;
+            }
+            else if (e.Key == Key.Left || e.Key == Key.Down)
+            {
+                Decrement_Click(sender, null);
+                decrement.Focusable = true;
+            } 
+        }      
+        private void textbox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            
             switch (e.Key)
             {
                 case Key.Right:
@@ -92,24 +110,8 @@ namespace TextBox1
                         Decrement_Click(sender, null);
                         break;
                     }
-            }        
-        }
-        private void textbox_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            textbox.Focusable = true;
-        }
-        private void textbox_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Right || e.Key == Key.Up)
-            {
-                Increment_Click(sender, null);
-                increment.Focusable = true;
             }
-            else if (e.Key == Key.Left || e.Key == Key.Down)
-            {
-                Decrement_Click(sender, null);
-                decrement.Focusable = true;
-            }
+
         }
     }    
 }
